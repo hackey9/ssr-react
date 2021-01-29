@@ -1,9 +1,9 @@
+import App from "App"
 import express from "express"
 import * as fs from "fs"
 import * as path from "path"
 import React, {FC, StrictMode} from "react"
 import ReactDOMServer from "react-dom/server"
-import App from "App"
 
 
 const Root: FC = () => {
@@ -22,7 +22,7 @@ const serverPath = path.resolve(process.cwd())
 const clientPath = path.resolve(serverPath, "..", "client")
 const htmlFilename = path.resolve(clientPath, "index.html")
 
-app.use(express.static(clientPath)) // FIXME: file client/index.html should be excluded from serving
+app.use(express.static(clientPath, {index: false})) // FIXME: file client/index.html should be excluded from serving
 
 app.all("*", async (req, res) => {
 

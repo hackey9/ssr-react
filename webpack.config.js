@@ -70,7 +70,16 @@ module.exports = [
           test: /\.s?css$/,
           use: [
             {loader: MiniCssExtractPlugin.loader},
-            {loader: "css-loader"},
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: {
+                  auto: true,
+                  localIdentName: "[name]__[local]__[hash:5]",
+                },
+              },
+            },
             {loader: "sass-loader"},
           ],
         },
@@ -138,7 +147,16 @@ module.exports = [
           test: /\.s?css$/,
           use: [
             {loader: MiniCssExtractPlugin.loader},
-            {loader: "css-loader"},
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: {
+                  auto: true,
+                  localIdentName: "[name]__[local]__[hash:5]",
+                },
+              },
+            },
             {loader: "sass-loader"},
           ],
         },
